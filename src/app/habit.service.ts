@@ -15,7 +15,13 @@ export class HabitService {
     headers: new HttpHeaders({ 'Content-type': 'application/json' }),
   };
 
+  /** GET: all habits */
   getHabits(): Observable<Habit[]> {
     return this.http.get<Habit[]>(this.habitsUrl);
+  }
+
+  /** POST: add a new habit to the server */
+  addHabit(habit: Habit): Observable<Habit> {
+    return this.http.post<Habit>(this.habitsUrl, habit, this.httpOptions);
   }
 }

@@ -27,5 +27,15 @@ export class AppComponent implements OnInit {
     this.habitService.getHabits().subscribe((habits) => (this.habits = habits));
   }
 
+  addHabit(habitText: string): void {
+    habitText = habitText.trim();
+    if (!habitText) {
+      return;
+    }
+    this.habitService.addHabit(new Habit(habitText)).subscribe((habit) => {
+      this.habits.push(habit);
+    });
+  }
+
   filter: any; // Bound to the filter prop on <habit-filter> component
 }

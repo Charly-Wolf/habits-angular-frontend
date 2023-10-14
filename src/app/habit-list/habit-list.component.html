@@ -7,7 +7,6 @@
         <habit-list-item 
             *ngFor="let habit of habits"
             [habitText]="habit.habitText"
-            [habitId]="habit.id"
             [(done)]="habit.isDone"
             [archived]="habit.isArchived"
         ></habit-list-item>

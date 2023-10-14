@@ -1,6 +1,6 @@
 <div class="container">
 
-  <add-habit-form (addHabit)="habits.push($event)">
+  <add-habit-form (addHabit)="addHabit($event.habitText)">
   </add-habit-form>
 
   <div class="row mt-3">
