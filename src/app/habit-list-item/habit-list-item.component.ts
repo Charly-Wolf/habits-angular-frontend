@@ -14,6 +14,10 @@ export class HabitListItemComponent {
   @Input() archived!: boolean; // ! not null assertion operator = this archived prop is a not null prop -> a trick for the compiler ;)
   @Output() doneChange = new EventEmitter<boolean>();
 
+  get cssClasses() {
+    return this.archived ? 'grayout' : this.done ? 'strikeout' : '';
+  }
+
   toggleDone() {
     this.done = !this.done;
     this.doneChange.emit(this.done);
