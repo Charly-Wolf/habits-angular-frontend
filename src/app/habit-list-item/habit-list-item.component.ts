@@ -15,7 +15,7 @@ export class HabitListItemComponent {
   @Output() doneChange = new EventEmitter<boolean>();
 
   get cssClasses() {
-    return this.archived ? 'grayout' : this.done ? 'strikeout' : '';
+    return {'strikeout': this.done,'text-muted': this.done || this.archived};
   }
 
   toggleDone() {
