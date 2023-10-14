@@ -6,6 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./habit-list-item.component.css'],
 })
 export class HabitListItemComponent {
+  @Input() habitId!: number;
   @Input() habitText!: string; // ! not null assertion operator = this habitText prop is a not null prop -> a trick for the compiler ;)
 
   @Input() done!: boolean; // ! not null assertion operator = this done prop is a not null prop -> a trick for the compiler ;)

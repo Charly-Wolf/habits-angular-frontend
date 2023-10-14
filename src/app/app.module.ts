@@ -7,6 +7,7 @@ import { HabitListComponent } from './habit-list/habit-list.component';
 import { AddHabitFormComponent } from './add-habit-form/add-habit-form.component';
 import { HabitFilterComponent } from './habit-filter/habit-filter.component';
 import { HabitListItemComponent } from './habit-list-item/habit-list-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HabitListItemComponent } from './habit-list-item/habit-list-item.compon
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

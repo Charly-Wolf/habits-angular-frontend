@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { HabitItem } from 'src/shared/models/habit';
+import Habit from 'src/shared/models/habit';
 
 @Component({
   selector: 'habit-list',
@@ -7,6 +7,5 @@ import { HabitItem } from 'src/shared/models/habit';
   styleUrls: ['./habit-list.component.css'],
 })
 export class HabitListComponent {
-  @Input() habits: HabitItem[] = [];
-
+  @Input() habits: Habit[] = [];
 }

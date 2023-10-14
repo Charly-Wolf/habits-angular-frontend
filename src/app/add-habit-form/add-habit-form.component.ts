@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { HabitItem } from 'src/shared/models/habit';
+import Habit from 'src/shared/models/habit';
 
 @Component({
   selector: 'add-habit-form',
@@ -7,12 +7,12 @@ import { HabitItem } from 'src/shared/models/habit';
   styleUrls: ['./add-habit-form.component.css'],
 })
 export class AddHabitFormComponent {
-  @Output() addHabit = new EventEmitter<HabitItem>();
+  @Output() addHabit = new EventEmitter<Habit>();
 
   newHabitText: string = '';
 
   addNewHabit() {
-    this.addHabit.emit(new HabitItem(this.newHabitText));
+    this.addHabit.emit(new Habit(0, this.newHabitText));
     this.newHabitText = '';
   }
 }

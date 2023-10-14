@@ -1,6 +1,6 @@
 <div class="container">
 
-  <add-habit-form (addHabit)="items.push($event)">
+  <add-habit-form (addHabit)="habits.push($event)">
   </add-habit-form>
 
   <div class="row mt-3">
@@ -8,7 +8,7 @@
   </div>
 
   <div class="row mt-3">
-    <habit-list [habits]="items.filter(this.filter)"></habit-list>
+    <habit-list [habits]="habits.filter(this.filter)"></habit-list>
   </div>
 
 </div>
