@@ -32,9 +32,11 @@ export class AppComponent implements OnInit {
     if (!habitText) {
       return;
     }
-    this.habitService.addHabit(new Habit(habitText)).subscribe((habit) => {
-      this.habits.push(habit);
-    });
+    this.habitService
+      .addHabit(new Habit(habitText))
+      .subscribe((newHabitFromBackend) => {
+        this.habits.push(newHabitFromBackend);
+      });
   }
 
   filter: any; // Bound to the filter prop on <habit-filter> component
