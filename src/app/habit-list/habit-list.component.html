@@ -1,0 +1,14 @@
+<div *ngIf="habits.length === 0; else showItems">
+    There are no habits to display
+</div>
+
+<ng-template #showItems>
+    <ul class="habit-list">
+        <habit-list-item 
+            *ngFor="let habit of habits"
+            [habitText]="habit.habitText"
+            [(done)]="habit.isDone"
+            [archived]="habit.isArchived"
+        ></habit-list-item>
+    </ul>
+</ng-template>

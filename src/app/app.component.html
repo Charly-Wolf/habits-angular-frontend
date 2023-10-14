@@ -1,0 +1,14 @@
+<div class="container">
+
+  <add-habit-form (addHabit)="items.push($event)">
+  </add-habit-form>
+
+  <div class="row mt-3">
+    <habit-filter [(filter)]="filter"></habit-filter>
+  </div>
+
+  <div class="row mt-3">
+    <habit-list [habits]="items.filter(this.filter)"></habit-list>
+  </div>
+
+</div>

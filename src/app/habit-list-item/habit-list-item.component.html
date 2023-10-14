@@ -1,0 +1,12 @@
+<li>
+    <div class="form-check">
+        <label for="" class="form-check-label">
+            <input 
+                *ngIf="!archived" 
+                type="checkbox" 
+                class="checkbox" 
+                [checked]="done"
+                (click)="toggleDone()"> {{habitText}}
+        </label>
+    </div>
+</li>
