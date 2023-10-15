@@ -4,9 +4,11 @@
 
 <ng-template #showItems>
     <ul class="habit-list">
-        <habit-list-item 
-            *ngFor="let habit of habits"
-            [habit] = "habit"
-        ></habit-list-item>
+        <div class="card">
+            <habit-list-item 
+                *ngFor="let habit of habits"
+                [habit] = "habit"
+            ></habit-list-item>
+        </div>
     </ul>
 </ng-template>
