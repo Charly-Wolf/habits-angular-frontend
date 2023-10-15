@@ -13,15 +13,13 @@ export class AppComponent implements OnInit {
 
   constructor(private habitService: HabitService, events: EventService) {
     events.listen('archiveHabit', (habit: Habit) => {
-      // TODO: archive habit in DB (PUT)
-      console.log(`Archived ${habit.habitText}`);
+      this.archiveHabit(habit);
     });
     events.listen('deleteHabit', (habit: Habit) => {
-      // TODO: delete habit in DB (DELETE)
-      let index = this.habits.indexOf(habit);
-      this.habits.splice(index, 1); // Remove habit from Frontend
-      console.log(`Deleted ${habit.habitText}`);
+      this.deleteHabit(habit);
     });
+    // TODO: Mark as done
+    // TODO: Edit name
   }
 
   ngOnInit(): void {
@@ -46,6 +44,23 @@ export class AppComponent implements OnInit {
         this.habits.push(newHabitFromBackend);
         this.sortHabitsByText();
       });
+  }
+
+  archiveHabit(habit: Habit): void {
+    // TODO: archive habit in DB (PUT)
+    // TODO: Handle errors
+    console.log(`Archived ${habit.habitText}`);
+  }
+
+  deleteHabit(habit: Habit): void {
+    // Delete habit in the DB (Backend)
+    // TODO: Handle errors
+    this.habitService.deleteHabit(habit.id).subscribe();
+
+    // Remove habit from Frontend
+    let index = this.habits.indexOf(habit);
+    this.habits.splice(index, 1);
+    console.log(`Deleted ${habit.habitText}`);
   }
 
   sortHabitsByText(): void {
