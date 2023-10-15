@@ -33,7 +33,19 @@ export class HabitService {
   }
 
   /** DELETE */
-  deleteHabit(id: number): Observable<Habit> {
-    return this.http.delete<Habit>(`${this.habitsUrl}/${id}`);
+  deleteHabit(habit: Habit): Observable<Habit> {
+    return this.http.delete<Habit>(
+      `${this.habitsUrl}/${habit.id}`,
+      this.httpOptions
+    );
+  }
+
+  /** PUT: Change habitText, isDone or isArchived. */
+  updateHabit(habit: Habit): Observable<Habit> {
+    return this.http.put<Habit>(
+      `${this.habitsUrl}/${habit.id}`,
+      habit,
+      this.httpOptions
+    );
   }
 }

@@ -47,20 +47,17 @@ export class AppComponent implements OnInit {
   }
 
   archiveHabit(habit: Habit): void {
-    // TODO: archive habit in DB (PUT)
     // TODO: Handle errors
-    console.log(`Archived ${habit.habitText}`);
+    // TODO: DB
+    // this.habitService.updateHabit(habit).subscribe();
   }
 
   deleteHabit(habit: Habit): void {
-    // Delete habit in the DB (Backend)
     // TODO: Handle errors
-    this.habitService.deleteHabit(habit.id).subscribe();
-
+    this.habitService.deleteHabit(habit).subscribe();
     // Remove habit from Frontend
     let index = this.habits.indexOf(habit);
     this.habits.splice(index, 1);
-    console.log(`Deleted ${habit.habitText}`);
   }
 
   sortHabitsByText(): void {
