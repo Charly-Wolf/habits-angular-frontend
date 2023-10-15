@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { EventService } from '../../shared/services/event.service';
+import { EventService } from '../../../shared/services/event.service';
 import Habit from 'src/shared/models/habit';
 
 @Component({

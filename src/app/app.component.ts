@@ -32,6 +32,9 @@ export class AppComponent implements OnInit {
     this.habitService.getHabits().subscribe((habits: Habit[]) => {
       this.habits = habits;
       this.sortHabitsByText();
+    },
+    (error: any) => {
+      alert(error.message); // TODO: Display a nice and clear error message
     });
   }
 
@@ -40,14 +43,14 @@ export class AppComponent implements OnInit {
     if (!habitText) {
       return;
     }
+    const newHabit : Habit = new Habit(null, habitText);
     this.habitService
       // Add habit to the Backend
-      .addHabit(new Habit(null, habitText))
-      .subscribe((newHabitFromBackend) => {
+      .addHabit(newHabit)
+      .subscribe();
         // Add habit to the Frontend
-        this.habits.push(newHabitFromBackend);
+        this.habits.push(newHabit);
         this.sortHabitsByText();
-      });
   }
 
   toggleArchiveHabit(habit: Habit): void {
