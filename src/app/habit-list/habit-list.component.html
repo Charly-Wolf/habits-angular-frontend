@@ -6,10 +6,7 @@
     <ul class="habit-list">
         <habit-list-item 
             *ngFor="let habit of habits"
-            [habitId] = "habit.id"
-            [habitText]="habit.habitText"
-            [(done)]="habit.isDone"
-            [archived]="habit.isArchived"
+            [habit] = "habit"
         ></habit-list-item>
     </ul>
 </ng-template>

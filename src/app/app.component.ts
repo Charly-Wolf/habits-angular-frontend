@@ -1,7 +1,7 @@
 import { HabitService } from '../shared/services/habit.service';
 import { Component, OnInit } from '@angular/core';
 import Habit from 'src/shared/models/habit';
-import events from './../shared/services/EventService'
+import events from './../shared/services/EventService';
 
 @Component({
   selector: 'app-root',
@@ -19,11 +19,16 @@ export class AppComponent implements OnInit {
   habits: Habit[] = [];
 
   constructor(private habitService: HabitService) {
-    events.listen('archiveHabit', (habit: any) => {
-      // todo archive habit
-
-      console.log(habit);
-    })
+    events.listen('archiveHabit', (habit: Habit) => {
+      // TODO: archive habit in DB (PUT)
+      console.log(`Archived ${habit.habitText}`);
+    });
+    events.listen('deleteHabit', (habit: Habit) => {
+      // TODO: delete habit in DB (DELETE) 
+      let index = this.habits.indexOf(habit);
+      this.habits.splice(index, 1); // Remove habit from Frontend
+      console.log(`Deleted ${habit.habitText}`);
+    });
   }
 
   ngOnInit(): void {

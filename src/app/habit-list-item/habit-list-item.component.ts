@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import events from './../../shared/services/EventService';
+import Habit from 'src/shared/models/habit';
 
 @Component({
   selector: 'habit-list-item',
@@ -7,24 +8,31 @@ import events from './../../shared/services/EventService';
   styleUrls: ['./habit-list-item.component.css'],
 })
 export class HabitListItemComponent {
-  @Input() habitId!: number;
-  @Input() habitText!: string; // ! not null assertion operator = this habitText prop is a not null prop -> a trick for the compiler ;)
-
-  @Input() done!: boolean; // ! not null assertion operator = this done prop is a not null prop -> a trick for the compiler ;)
-
-  @Input() archived!: boolean; // ! not null assertion operator = this archived prop is a not null prop -> a trick for the compiler ;)
-  @Output() doneChange = new EventEmitter<boolean>();
+  @Input() habit!: Habit; // ! not null assertion operator = this tricks the compiler to think this is not null
 
   get cssClasses() {
-    return { strikeout: this.done, 'text-muted': this.done || this.archived };
+    return {
+      strikeout: this.habit.isDone && !this.habit.isArchived,
+      'text-muted': this.habit.isDone || this.habit.isArchived,
+    };
   }
 
   archiveHabit() {
-    events.emit('archiveHabit', this.habitText);
+      if (confirm(`Archive ${this.habit.habitText}?`) === true) {
+        events.emit('archiveHabit', this.habit);
+        this.habit.isArchived = !this.habit.isArchived;
+      }
+  }
+
+  // TODO: unarchiveHabit / restoreHabit (new button needed)
+
+  removeHabit() {
+    if (confirm(`Delete ${this.habit.habitText}?`) === true) {
+      events.emit('deleteHabit', this.habit);
+    }
   }
 
   toggleDone() {
-    this.done = !this.done;
-    this.doneChange.emit(this.done);
+    this.habit.isDone = !this.habit.isDone;
   }
 }
