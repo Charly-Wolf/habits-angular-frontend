@@ -19,18 +19,22 @@ export class HabitListItemComponent {
 
   constructor(private events: EventService) {}
 
-  archiveHabit() {
-    if (confirm(`Archive ${this.habit.habitText}?`) === true) {
-      this.habit.isArchived = !this.habit.isArchived;
-      this.events.emit('archiveHabit', this.habit);
-    }
-  }
-
-  // TODO: unarchiveHabit / restoreHabit (new button needed)
-
   removeHabit() {
     if (confirm(`Delete ${this.habit.habitText}?`) === true) {
       this.events.emit('deleteHabit', this.habit);
+    }
+  }
+
+  toggleArchiveHabit() {
+    if (
+      confirm(
+        `${this.habit.isArchived ? 'Restore' : 'Archive'} ${
+          this.habit.habitText
+        }?`
+      ) === true
+    ) {
+      this.habit.isArchived = !this.habit.isArchived;
+      this.events.emit('toggleArchiveHabit', this.habit);
     }
   }
 

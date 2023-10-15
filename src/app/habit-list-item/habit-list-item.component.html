@@ -6,7 +6,12 @@
             {{habit.habitText}}
         </label>
     </div>
-    <div>
-        <button type="button" class="btn-close" (click)="!habit.isArchived? archiveHabit() : removeHabit()"></button>
+    <div class="btn-group" role="group">
+        <button *ngIf="habit.isArchived" class="btn btn-primary" (click)="toggleArchiveHabit()">
+            <i class="bi bi-arrow-90deg-up"></i>
+        </button>
+        <button type="button" class="btn btn-danger" (click)="!habit.isArchived? toggleArchiveHabit() : removeHabit()">
+            <i class="bi bi-x-lg"></i>
+        </button>
     </div>
 </li>

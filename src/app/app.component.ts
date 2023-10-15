@@ -12,8 +12,8 @@ export class AppComponent implements OnInit {
   habits: Habit[] = [];
 
   constructor(private habitService: HabitService, events: EventService) {
-    events.listen('archiveHabit', (habit: Habit) => {
-      this.archiveHabit(habit);
+    events.listen('toggleArchiveHabit', (habit: Habit) => {
+      this.toggleArchiveHabit(habit);
     });
     events.listen('deleteHabit', (habit: Habit) => {
       this.deleteHabit(habit);
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
       });
   }
 
-  archiveHabit(habit: Habit): void {
+  toggleArchiveHabit(habit: Habit): void {
     // DO I need this and toggle done or can I just unify them in updateHabit()?
     // TODO: Handle errors
     this.habitService.updateHabit(habit).subscribe();
