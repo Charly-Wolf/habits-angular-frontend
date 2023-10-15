@@ -39,6 +39,7 @@ export class HabitListItemComponent {
   }
 
   toggleDone() {
+    // TODO: Sort done habits after the not done
     this.habit.isDone = !this.habit.isDone;
     this.events.emit('toggleDone', this.habit);
   }
