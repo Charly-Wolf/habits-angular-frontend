@@ -1,12 +1,26 @@
 <h1>Login</h1>
 <form>
     <div class="mb-3">
-        <input type="email" class="form-control" placeholder="email address">
+        <input 
+            type="email" 
+            class="form-control" 
+            placeholder="email address"
+            [formControl]="userEmailControl"
+        >
     </div>
     <div class="mb-3">
-        <input type="text" class="form-control" placeholder="password">
+        <input 
+            type="text" 
+            class="form-control" 
+            placeholder="password"
+            [formControl]="userPasswordControl"
+        >
     </div>
     <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button 
+            type="submit" 
+            class="btn btn-primary"
+            (click)="$event.preventDefault(); submitForm()"
+        >Login</button>
     </div>
 </form>
