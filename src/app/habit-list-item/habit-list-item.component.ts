@@ -36,5 +36,6 @@ export class HabitListItemComponent {
 
   toggleDone() {
     this.habit.isDone = !this.habit.isDone;
+    this.events.emit('toggleDone', this.habit);
   }
 }

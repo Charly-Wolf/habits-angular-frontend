@@ -18,7 +18,9 @@ export class AppComponent implements OnInit {
     events.listen('deleteHabit', (habit: Habit) => {
       this.deleteHabit(habit);
     });
-    // TODO: Mark as done
+    events.listen('toggleDone', (habit: Habit) => {
+      this.toggleHabitDone(habit);
+    });
     // TODO: Edit name
   }
 
@@ -47,6 +49,7 @@ export class AppComponent implements OnInit {
   }
 
   archiveHabit(habit: Habit): void {
+    // DO I need this and toggle done or can I just unify them in updateHabit()?
     // TODO: Handle errors
     this.habitService.updateHabit(habit).subscribe();
   }
@@ -63,6 +66,11 @@ export class AppComponent implements OnInit {
     this.habits.sort((a: Habit, b: Habit) =>
       a.habitText.localeCompare(b.habitText)
     );
+  }
+
+  toggleHabitDone(habit: Habit): void {
+    // TODO: Handle errors
+    this.habitService.updateHabit(habit).subscribe();
   }
 
   filter: any; // Bound to the filter prop on <habit-filter> component
