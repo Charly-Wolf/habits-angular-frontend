@@ -5,6 +5,7 @@ const filters = [
   (habit: Habit) => !habit.isArchived,
   (habit: Habit) => habit.isDone && !habit.isArchived,
   (habit: Habit) => !habit.isDone && !habit.isArchived,
+  (habit: Habit) => habit,
   (habit: Habit) => habit.isArchived,
 ];
 

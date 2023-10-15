@@ -3,9 +3,10 @@
         class="form-select" 
         [(ngModel)]="listFilter" 
         (ngModelChange)="updateFilter($event)">
-        <option value="0">All active</option>
-        <option value="1">Done ✅</option>
-        <option value="2">Undone </option>
-        <option value="3">Archived 🧰</option>
+        <option value="0">Active</option>
+        <option value="1">Done</option>
+        <option value="2">To do </option>
+        <option value="3">All</option>
+        <option value="4">Archived</option>
     </select>
 </div>
