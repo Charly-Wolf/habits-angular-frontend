@@ -1,4 +1,4 @@
-import { HabitService } from './habit.service';
+import { HabitService } from '../shared/services/habit.service';
 import { Component, OnInit } from '@angular/core';
 import Habit from 'src/shared/models/habit';
 
@@ -24,7 +24,10 @@ export class AppComponent implements OnInit {
   }
 
   getHabits(): void {
-    this.habitService.getHabits().subscribe((habits) => (this.habits = habits));
+    this.habitService.getHabits().subscribe((habits) => {
+      this.habits = habits;
+      this.sortHabitsByText();
+    });
   }
 
   addHabit(habitText: string): void {
@@ -36,7 +39,14 @@ export class AppComponent implements OnInit {
       .addHabit(new Habit(habitText))
       .subscribe((newHabitFromBackend) => {
         this.habits.push(newHabitFromBackend);
+        this.sortHabitsByText();
       });
+  }
+
+  sortHabitsByText(): void {
+    this.habits.sort((a: Habit, b: Habit) =>
+      a.habitText.localeCompare(b.habitText)
+    );
   }
 
   filter: any; // Bound to the filter prop on <habit-filter> component
