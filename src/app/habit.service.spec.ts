@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HabitService } from '../shared/services/habit.service';
+import { HabitService } from './habit/habit.service';
 
 describe('HabitService', () => {
   let service: HabitService;

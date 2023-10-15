@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../shared/services/event.service';
-import { HabitService } from '../shared/services/habit.service';
+import { HabitService } from './habit/habit.service';
 import Habit from 'src/shared/models/habit';
 
 @Component({
@@ -29,13 +29,15 @@ export class AppComponent implements OnInit {
   }
 
   getHabits(): void {
-    this.habitService.getHabits().subscribe((habits: Habit[]) => {
-      this.habits = habits;
-      this.sortHabitsByText();
-    },
-    (error: any) => {
-      alert(error.message); // TODO: Display a nice and clear error message
-    });
+    this.habitService.getHabits().subscribe(
+      (habits: Habit[]) => {
+        this.habits = habits;
+        this.sortHabitsByText();
+      },
+      (error: any) => {
+        alert(error.message); // TODO: Display a nice and clear error message
+      }
+    );
   }
 
   addHabit(habitText: string): void {
@@ -43,14 +45,14 @@ export class AppComponent implements OnInit {
     if (!habitText) {
       return;
     }
-    const newHabit : Habit = new Habit(null, habitText);
+    const newHabit: Habit = new Habit(null, habitText);
     this.habitService
       // Add habit to the Backend
       .addHabit(newHabit)
       .subscribe();
-        // Add habit to the Frontend
-        this.habits.push(newHabit);
-        this.sortHabitsByText();
+    // Add habit to the Frontend
+    this.habits.push(newHabit);
+    this.sortHabitsByText();
   }
 
   toggleArchiveHabit(habit: Habit): void {
