@@ -42,6 +42,7 @@ export class HabitService {
 
   /** PUT: Change habitText, isDone or isArchived. */
   updateHabit(habit: Habit): Observable<Habit> {
+    alert(`Updated  ${habit.id}: ${habit.habitText}`);
     return this.http.put<Habit>(
       `${this.habitsUrl}/${habit.id}`,
       habit,

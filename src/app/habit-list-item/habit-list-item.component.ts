@@ -21,8 +21,8 @@ export class HabitListItemComponent {
 
   archiveHabit() {
     if (confirm(`Archive ${this.habit.habitText}?`) === true) {
-      this.events.emit('archiveHabit', this.habit);
       this.habit.isArchived = !this.habit.isArchived;
+      this.events.emit('archiveHabit', this.habit);
     }
   }
 

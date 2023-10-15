@@ -48,8 +48,7 @@ export class AppComponent implements OnInit {
 
   archiveHabit(habit: Habit): void {
     // TODO: Handle errors
-    // TODO: DB
-    // this.habitService.updateHabit(habit).subscribe();
+    this.habitService.updateHabit(habit).subscribe();
   }
 
   deleteHabit(habit: Habit): void {
