@@ -12,7 +12,7 @@ export class AddHabitFormComponent {
   newHabitText: string = '';
 
   addNewHabit() {
-    this.addHabit.emit(new Habit(this.newHabitText));
+    this.addHabit.emit(new Habit(null, this.newHabitText));
     this.newHabitText = '';
   }
 }

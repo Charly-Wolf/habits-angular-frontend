@@ -8,7 +8,11 @@
   </div>
 
   <div class="row mt-3">
-    <habit-list [habits]="habits.filter(this.filter)"></habit-list>
+    <div class="col-sm-4">
+      <habit-list 
+        [habits]="habits.filter(this.filter)"
+      ></habit-list>
+    </div>
   </div>
 
 </div>

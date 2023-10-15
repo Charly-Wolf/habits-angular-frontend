@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import events from './../../shared/services/EventService';
 
 @Component({
   selector: 'habit-list-item',
@@ -15,7 +16,11 @@ export class HabitListItemComponent {
   @Output() doneChange = new EventEmitter<boolean>();
 
   get cssClasses() {
-    return {'strikeout': this.done,'text-muted': this.done || this.archived};
+    return { strikeout: this.done, 'text-muted': this.done || this.archived };
+  }
+
+  archiveHabit() {
+    events.emit('archiveHabit', this.habitText);
   }
 
   toggleDone() {

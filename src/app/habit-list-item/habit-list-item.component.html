@@ -1,12 +1,11 @@
-<li>
+<li class="d-flex justify-content-between">
     <div class="form-check">
         <label class="form-check-label" [ngClass]="cssClasses">
-            <input 
-                *ngIf="!archived" 
-                type="checkbox" 
-                class="checkbox" 
-                [checked]="done"
-                (click)="toggleDone()"> {{habitText}}
+            <input *ngIf="!archived" type="checkbox" class="checkbox" [checked]="done" (click)="toggleDone()">
+            {{habitText}}
         </label>
+    </div>
+    <div>
+        <button type="button" class="btn-close" (click)="archiveHabit()"></button>
     </div>
 </li>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import Habit from 'src/shared/models/habit';
-import { Observable, of, catchError, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -17,7 +17,14 @@ export class HabitService {
 
   /** GET: all habits */
   getHabits(): Observable<Habit[]> {
-    return this.http.get<Habit[]>(this.habitsUrl);
+    return this.http.get<Habit[]>(this.habitsUrl, this.httpOptions);
+  }
+
+  /** GET: one habit by Id */
+  getHabitById(id: number): Observable<Habit> {
+    const habit =  this.http.get<Habit>(`${this.habitsUrl}/${id}`, this.httpOptions);
+    alert(habit);
+    return habit;
   }
 
   /** POST: add a new habit to the server */
