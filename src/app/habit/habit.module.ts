@@ -7,6 +7,7 @@ import { HabitListComponent } from './habit-list/habit-list.component';
 import { AddHabitFormComponent } from './add-habit-form/add-habit-form.component';
 import { HabitFilterComponent } from './habit-filter/habit-filter.component';
 import { HabitListItemComponent } from './habit-list-item/habit-list-item.component';
+import { HabitComponent } from './habit.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,11 @@ import { HabitListItemComponent } from './habit-list-item/habit-list-item.compon
     AddHabitFormComponent,
     HabitFilterComponent,
     HabitListItemComponent,
+    HabitComponent,
   ],
   imports: [CommonModule, FormsModule, HttpClientModule],
   exports: [
-    HabitListComponent,
-    AddHabitFormComponent,
-    HabitFilterComponent,
-    HabitListItemComponent,
+    HabitComponent
   ],
 })
 export class HabitModule {}

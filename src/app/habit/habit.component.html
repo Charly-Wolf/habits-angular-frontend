@@ -1,0 +1,16 @@
+<div class="container">
+
+    <add-habit-form (addHabit)="addHabit($event.habitText)">
+    </add-habit-form>
+
+    <div class="row mt-3">
+        <habit-filter [(filter)]="filter"></habit-filter>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-sm-4">
+            <habit-list [habits]="habits.filter(this.filter)"></habit-list>
+        </div>
+    </div>
+
+</div>
