@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import events from './../../shared/services/EventService';
+import { EventService } from '../../shared/services/event.service';
 import Habit from 'src/shared/models/habit';
 
 @Component({
@@ -17,18 +17,20 @@ export class HabitListItemComponent {
     };
   }
 
+  constructor(private events: EventService) {}
+
   archiveHabit() {
-      if (confirm(`Archive ${this.habit.habitText}?`) === true) {
-        events.emit('archiveHabit', this.habit);
-        this.habit.isArchived = !this.habit.isArchived;
-      }
+    if (confirm(`Archive ${this.habit.habitText}?`) === true) {
+      this.events.emit('archiveHabit', this.habit);
+      this.habit.isArchived = !this.habit.isArchived;
+    }
   }
 
   // TODO: unarchiveHabit / restoreHabit (new button needed)
 
   removeHabit() {
     if (confirm(`Delete ${this.habit.habitText}?`) === true) {
-      events.emit('deleteHabit', this.habit);
+      this.events.emit('deleteHabit', this.habit);
     }
   }
 
