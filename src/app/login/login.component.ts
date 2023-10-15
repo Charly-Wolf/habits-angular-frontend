@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,12 +8,15 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  userEmailControl = new FormControl('');
-  userPasswordControl = new FormControl('');
+  contactForm = new FormGroup({
+    userEmail: new FormControl(''),
+    userPassword: new FormControl(''),
+  });
 
   submitForm() {
-    if (this.userEmailControl.dirty) {
-      alert('You changed the email field');
-    }
+    console.log(this.contactForm.valid);
+    // if (this.contactForm.userEmail.dirty) {
+    //   alert('You changed the email field');
+    // }
   }
 }

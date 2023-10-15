@@ -1,11 +1,14 @@
 <h1>Login</h1>
-<form>
+<form
+    [formGroup]="contactForm"
+    (ngSubmit)="$event.preventDefault(); submitForm()"
+>
     <div class="mb-3">
         <input 
             type="email" 
             class="form-control" 
             placeholder="email address"
-            [formControl]="userEmailControl"
+            formControlName="userEmail"
         >
     </div>
     <div class="mb-3">
@@ -13,14 +16,13 @@
             type="text" 
             class="form-control" 
             placeholder="password"
-            [formControl]="userPasswordControl"
+            formControlName="userPassword"
         >
     </div>
     <div class="mb-3">
         <button 
             type="submit" 
             class="btn btn-primary"
-            (click)="$event.preventDefault(); submitForm()"
         >Login</button>
     </div>
 </form>
