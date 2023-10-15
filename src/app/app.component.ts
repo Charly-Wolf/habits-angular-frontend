@@ -1,7 +1,7 @@
-import { HabitService } from '../shared/services/habit.service';
 import { Component, OnInit } from '@angular/core';
-import Habit from 'src/shared/models/habit';
 import { EventService } from '../shared/services/event.service';
+import { HabitService } from '../shared/services/habit.service';
+import Habit from 'src/shared/models/habit';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   }
 
   getHabits(): void {
-    this.habitService.getHabits().subscribe((habits) => {
+    this.habitService.getHabits().subscribe((habits: Habit[]) => {
       this.habits = habits;
       this.sortHabitsByText();
     });
@@ -41,8 +41,10 @@ export class AppComponent implements OnInit {
       return;
     }
     this.habitService
+      // Add habit to the Backend
       .addHabit(new Habit(null, habitText))
       .subscribe((newHabitFromBackend) => {
+        // Add habit to the Frontend
         this.habits.push(newHabitFromBackend);
         this.sortHabitsByText();
       });
@@ -56,6 +58,7 @@ export class AppComponent implements OnInit {
 
   deleteHabit(habit: Habit): void {
     // TODO: Handle errors
+    // Delete habit from Backend
     this.habitService.deleteHabit(habit).subscribe();
     // Remove habit from Frontend
     let index = this.habits.indexOf(habit);

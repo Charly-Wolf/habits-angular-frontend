@@ -17,7 +17,7 @@ export class HabitService {
 
   /** GET: all habits */
   getHabits(): Observable<Habit[]> {
-    return this.http.get<Habit[]>(this.habitsUrl, this.httpOptions);
+    return this.http.get<Habit[]>(this.habitsUrl);
   }
 
   /** GET: one habit by Id */
