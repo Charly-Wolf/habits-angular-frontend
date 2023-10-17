@@ -34,7 +34,7 @@ export class HabitComponent implements OnInit {
   }
 
   getHabits(): void {
-    this.habitService.getHabits().subscribe(
+    this.habitService.getHabits().subscribe( // TODO: Replace deprecated with next: err: ...
       (habits: Habit[]) => {
         this.habits = habits;
         this.sortHabitsByText();

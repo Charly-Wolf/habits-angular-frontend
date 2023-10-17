@@ -8,6 +8,8 @@ import { AddHabitFormComponent } from './add-habit-form/add-habit-form.component
 import { HabitFilterComponent } from './habit-filter/habit-filter.component';
 import { HabitListItemComponent } from './habit-list-item/habit-list-item.component';
 import { HabitComponent } from './habit.component';
+import { HabitDetailsComponent } from './habitDetails/habitDetails.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,10 +18,9 @@ import { HabitComponent } from './habit.component';
     HabitFilterComponent,
     HabitListItemComponent,
     HabitComponent,
+    HabitDetailsComponent,
   ],
-  imports: [CommonModule, FormsModule, HttpClientModule],
-  exports: [
-    HabitComponent
-  ],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
+  exports: [HabitComponent],
 })
 export class HabitModule {}

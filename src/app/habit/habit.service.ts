@@ -29,11 +29,11 @@ export class HabitService {
   }
 
   /** GET: one habit by Id */
-  // getHabitById(id: number): Observable<Habit> {
-  //   const habit =  this.http.get<Habit>(`${this.habitsUrl}/${id}`, this.httpOptions);
-  //   alert(habit);
-  //   return habit;
-  // }
+  getHabitById(id: number): Observable<Habit> {
+    let options = this.getHttpOptions();
+    const habit =  this.http.get<Habit>(`${this.habitsUrl}/${id}`, options);
+    return habit;
+  }
 
   /** POST: add a new habit to the server */
   addHabit(habit: Habit) {

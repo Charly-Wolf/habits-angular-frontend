@@ -8,11 +8,17 @@
             </label>
         </div>
         <div class="btn-group" role="group">
-            <button *ngIf="habit.isArchived" class="btn btn-primary" (click)="toggleArchiveHabit()">
-                <i class="bi bi-arrow-90deg-up"></i>
+            <button class="btn">
+                <a [routerLink]="['/habit', habit.id]">
+                    <i class="bi bi-info-circle-fill"></i>
+                </a>
             </button>
-            <button type="button" class="btn btn-danger" (click)="!habit.isArchived? toggleArchiveHabit() : removeHabit()">
+            <button type="button" class="btn btn-danger"
+                (click)="!habit.isArchived? toggleArchiveHabit() : removeHabit()">
                 <i class="bi bi-x-lg"></i>
+            </button>
+            <button *ngIf="habit.isArchived" class="btn btn-success" (click)="toggleArchiveHabit()">
+                <i class="bi bi-arrow-90deg-up"></i>
             </button>
         </div>
     </li>
