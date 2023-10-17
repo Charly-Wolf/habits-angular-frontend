@@ -6,7 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'home', component: HabitComponent },
+  { path: 'dashboard', component: HabitComponent },
   { path: '**', component: NotFoundComponent }, // ** is a wildcard for any path which is not one of the above, IT MUST BE AT THE END OF THE ARRAY!
 ];
 

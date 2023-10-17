@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from './../../shared/services/event.service';
 import { HabitService } from './habit.service';
 import Habit from 'src/shared/models/habit';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-habit',
@@ -11,7 +12,11 @@ import Habit from 'src/shared/models/habit';
 export class HabitComponent implements OnInit {
   habits: Habit[] = [];
 
-  constructor(private habitService: HabitService, events: EventService) {
+  constructor(
+    private habitService: HabitService,
+    events: EventService,
+    private router: Router
+  ) {
     events.listen('toggleArchiveHabit', (habit: Habit) => {
       this.toggleArchiveHabit(habit);
     });
@@ -82,4 +87,9 @@ export class HabitComponent implements OnInit {
   }
 
   filter: any; // Bound to the filter prop on <habit-filter> component
+
+  logout() {
+    // TODO: Add propper logout (also in the backend)
+    this.router.navigate(['']);
+  }
 }

@@ -1,6 +1,6 @@
 <div class="m-3">
     <h1>Login</h1>
-    <form [formGroup]="contactForm" (ngSubmit)="$event.preventDefault(); submitForm()">
+    <form [formGroup]="contactForm" (ngSubmit)="$event.preventDefault(); login()">
         <div class="mb-3">
             <input type="email" class="form-control" placeholder="email address (example@mail.com)" formControlName="userEmail">
             <div *ngIf="contactForm.get('userEmail')?.invalid && (contactForm.get('userEmail')?.dirty || contactForm.get('userEmail')?.touched)">
@@ -40,7 +40,11 @@
             </div>
         </div>
         <div class="mb-3">
-            <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Login</button>
+            <button 
+                type="submit" 
+                class="btn btn-primary" 
+                [disabled]="contactForm.invalid"
+            >Login</button>
         </div>
     </form>
 </div>
