@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormGroup, Validators } from '@angular/forms';
+// import invalidPassword from './invalidPassword';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,22 @@ import { FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&_\-\+]{8,}$/;
+  // - At least one lowercase letter (a-z)
+  // - At least one uppercase letter (A-Z)
+  // - At least one digit (0-9)
+  // - At least one special character from the set [@$!%*?&]
+  // - Allows additional special characters [_-+] in the password
+  // - The password must be at least 8 characters long
+
   contactForm = new FormGroup({
     userEmail: new FormControl('', [Validators.required, Validators.email]),
     userPassword: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
+      // Validators.minLength(8),
+      // invalidPassword
+      Validators.pattern(this.passwordRegex),
     ]), // TODO: Create a regex pattern
   });
 
